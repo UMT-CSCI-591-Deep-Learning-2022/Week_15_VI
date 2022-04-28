@@ -77,11 +77,3 @@ def gen_coeffs(betas):
     binned = np.histogram(np.array(betas)[:,i],bins=1000,range=(-10,10))
     coeffs.append(binned[1][np.argmax(binned[0])])
   return coeffs
-
-
-def mcmc(x, y, order, steps=10000, silence=True):
-    betas = mh(x, y, order, steps, silence=silence)
-    
-    coeffs = gen_coeffs(betas)
-    
-    return coeff_plot(coeffs, x)
